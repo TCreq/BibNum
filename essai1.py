@@ -11,6 +11,7 @@ import epub as e2
 import ebooklib
 from ebooklib import epub
 
+book=e2.open_epub('zola_emile_-_au_bonheur_des_dames.epub')
 book=e2.open_epub('stendhal_-_le_rouge_et_le_noir.epub')
 
 for item in book.opf.manifest.values():
