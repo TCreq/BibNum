@@ -30,3 +30,17 @@ book=e2.open_epub('stendhal_-_le_rouge_et_le_noir.epub')
 t=book.toc.as_xml_document()
 print(t)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
