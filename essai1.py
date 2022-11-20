@@ -27,7 +27,7 @@ for item in book.opf.manifest.values():
   if 'html' in item.identifier and k<15:
     k+=1
     soup = BeautifulSoup(data,features='lxml')
-    print(soup.get_text())
+    #print(soup.get_text())
 #print(book.opf.manifest)
 #print(book.opf.manifest.values())
 t=book.toc
