@@ -25,6 +25,7 @@ class Livre():
       self.auteur=self.book.get_metadata('DC', 'creator')[0][0]
       self.lang=self.book.get_metadata('DC', 'language')[0][0]
       self.table='\n'.join([i.labels[0][0] for i in self.book2.toc.nav_map.nav_point])
+      self.t=[i.labels[0][0] for i in self.book2.toc.nav_map.nav_point]
     elif 'pdf' in adresse:
       self.adresse=adresse
       self.book=PdfReader(adresse)
@@ -33,6 +34,7 @@ class Livre():
       self.auteur=str(self.book.metadata.author)
       self.lang=detect(self.book.pages[0].extract_text(0))
       self.table='\n'.join(Livre.tablepdf(self.book.outlines))
+      self.t=Livre.tablepdf(self.book.outlines)
     else:
       raise Exception("Fichier non reconnu, uniquement fichiers epub ou pdf")
 
@@ -45,6 +47,9 @@ class Livre():
       else:
         bits+=['  '+u for u in Livre.tablepdf(i)]
     return bits
+
+  def specpdf(self):
+    return [f'titre={self.titre}',f'auteur={self.auteur}',f'langue={self.lang}',f'Table des matières : ',]+[str(i) for i in self.t]
 
   def __repr__(self):
     return ('\n'+60*'-'+'\n').join([f'titre={self.titre}',f'auteur={self.auteur}',f'langue={self.lang}',f'Table des matières : \n'+self.table])
@@ -65,6 +70,7 @@ with open("rapport.txt","w") as f:
 
 
 my_canvas = canvas.Canvas("rapport.pdf")
-my_canvas.drawString(100, 750, str(l))
+for i in l.specpdf():
+  my_canvas.drawString(100, 750, str(i))
 my_canvas.save()
 
