@@ -70,7 +70,9 @@ with open("rapport.txt","w") as f:
 
 
 my_canvas = canvas.Canvas("rapport.pdf")
+k=0
 for i in l.specpdf():
-  my_canvas.drawString(100, 750, str(i))
+  my_canvas.drawString(100, 750+k*15, str(i))
+  k+=1
 my_canvas.save()
 
