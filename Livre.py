@@ -73,6 +73,9 @@ my_canvas = canvas.Canvas("rapport.pdf")
 k=0
 for i in l.specpdf():
   my_canvas.drawString(100, 750-k*15, str(i))
+  if 750-k*15<50:
+    my_canvas.showPage()
   k+=1
+my_canvas.showPage()
 my_canvas.save()
 
