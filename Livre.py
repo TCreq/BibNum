@@ -11,20 +11,14 @@ import epub as e2
 from ebooklib import epub
 #from bs4 import BeautifulSoup
 from langdetect import detect
-
+from reportlab.pdfgen import canvas
 
 class Livre():
   
   
   def __init__(self,adresse=None):
-    if adresse==None:
-      self.book=None
-      self.book2=None
-      self.titre=''
-      self.auteur=''
-      self.lang=''
-      self.table=''
-    elif 'epub' in adresse:
+    if 'epub' in adresse:
+      self.adresse=adresse
       self.book=epub.read_epub(adresse)
       self.book2=e2.open_epub(adresse)
       self.titre=self.book.get_metadata('DC', 'title')[0][0]
@@ -32,6 +26,7 @@ class Livre():
       self.lang=self.book.get_metadata('DC', 'language')[0][0]
       self.table='\n'.join([i.labels[0][0] for i in self.book2.toc.nav_map.nav_point])
     elif 'pdf' in adresse:
+      self.adresse=adresse
       self.book=PdfReader(adresse)
       self.book2=None
       self.titre=str(self.book.metadata.title)
@@ -63,4 +58,13 @@ print(l)
 
 
 
+
+
+with open("rapport.txt","w") as f:
+  print(str(l), file=f)
+
+
+my_canvas = canvas.Canvas("rapport.pdf")
+my_canvas.drawString(100, 750, str(l))
+my_canvas.save()
 
