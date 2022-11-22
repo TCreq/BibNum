@@ -156,12 +156,7 @@ nav_css = epub.EpubItem(uid="style_nav",
                         media_type="text/css",
                         content=style)
 book.add_item(nav_css)
-book.toc = (epub.Link('prop.xhtml', 'Proprietes', 'prop'),
-              (
-                epub.Section('Page2'),
-                (c1, c2)
-              )
-            )
+book.toc = (c1,c2)
 book.spine = ['nav', c1, c2]
 book.add_item(epub.EpubNcx())
 book.add_item(epub.EpubNav())
