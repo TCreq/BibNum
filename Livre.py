@@ -55,7 +55,9 @@ class Livre():
   def __repr__(self):
     return ('\n'+60*'-'+'\n').join([f'titre={self.titre}',f'auteur={self.auteur}',f'langue={self.lang}',f'Table des matières : \n'+self.table])
 
+###
 
+"""
 
 l=Livre('stendhal_-_le_rouge_et_le_noir.epub')
 print(l)
@@ -70,7 +72,6 @@ with open("rapport.txt","w") as f:
   print(str(l), file=f)
 
 
-'''
 my_canvas = canvas.Canvas("rapport.pdf")
 k=0
 for i in l.specpdf():
@@ -81,9 +82,7 @@ for i in l.specpdf():
   k+=1
 my_canvas.showPage()
 my_canvas.save()
-'''
 
-"""
 book = epub.EpubBook()
 book.set_identifier('rapport'+l.titre)
 book.set_title(l.titre)
@@ -119,7 +118,6 @@ epub.write_epub('test.epub', book)
 
 with open('rapport.html', 'w') as outfile:
     outfile.write(soup.prettify())
-"""
 
 book = epub.EpubBook()
 book.set_identifier('sample123456')
@@ -169,7 +167,7 @@ book.add_item(epub.EpubNav())
 
 epub.write_epub('test.epub', book)
 
-
+"""
 
 
 
