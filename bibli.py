@@ -158,7 +158,7 @@ nav_css = epub.EpubItem(uid="style_nav",
 book.add_item(nav_css)
 book.toc = (epub.Link('prop.xhtml', 'Proprietes', 'prop'),
               (
-                epub.Section('Languages'),
+                epub.Section('Page2'),
                 (c1, c2)
               )
             )
