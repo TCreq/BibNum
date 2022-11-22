@@ -96,41 +96,7 @@ my_canvas.showPage()
 my_canvas.save()
 
 
-"""
 ### Rapport Epub
-book = epub.EpubBook()
-book.set_identifier('rapport'+l.titre)
-book.set_title(l.titre)
-book.set_language(l.lang)
-book.add_author(l.auteur)
-soup=BeautifulSoup()
-body=soup.new_tag('body')
-soup.insert(0,body)
-s=l.specpdf()
-s.reverse()
-for line in s:
-  body.insert(0,line)
-# intro chapter
-c1 = epub.EpubHtml(title='Rapport',
-                   file_name='Rapport.xhtml',
-                   lang='fr')
-c1.set_content(soup.prettify())
-#print(c1.get_content())
-book.add_item(c1)
-style = 'body { font-family: Times, Times New Roman, serif; }'
-nav_css = epub.EpubItem(uid="style_nav",
-                        file_name="style/nav.css",
-                        media_type="text/css",
-                        content=style)
-book.add_item(nav_css)
-book.add_item(epub.EpubNcx())
-book.add_item(epub.EpubNav())
-epub.write_epub('test.epub', book)
-with open('rapport.html', 'w') as outfile:
-    outfile.write(soup.prettify())
-"""
-
-### Creation Epub
 book = epub.EpubBook()
 book.set_identifier('rapportLivre1')
 book.set_title('RapportLivre')
@@ -138,16 +104,13 @@ book.set_language('fr')
 book.add_author('system')
 book.add_metadata('DC', 'description', 'Rapport sur le livre')
 book.add_metadata(None, 'meta', '', {'name': 'key', 'content': 'value'})
-# intro chapter
 c1 = epub.EpubHtml(title='Proprietes',
                    file_name='prop.xhtml',
                    lang='fr')
 c1.set_content('<html><body><h1>Propietes</h1><p>'+str(l)+'</p></body></html>')
-# about chapter
-c2 = epub.EpubHtml(title='Page 2',
-                   file_name='page2.xhtml')
-c2.set_content('<h1> </h1><p> </p>')
-#print(c1.get_content())
+c2 = epub.EpubHtml(title='Fin',
+                   file_name='fin.xhtml')
+c2.set_content('<h1> ... </h1><p> ... </p>')
 book.add_item(c1)
 book.add_item(c2)
 style = 'body { font-family: Times, Times New Roman, serif; }'
