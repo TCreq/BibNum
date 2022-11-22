@@ -14,6 +14,8 @@ from bs4 import BeautifulSoup
 from langdetect import detect
 from reportlab.pdfgen import canvas
 
+###---------------------------------------------------------------
+
 class Livre():
   
   
@@ -55,7 +57,19 @@ class Livre():
   def __repr__(self):
     return ('\n'+60*'-'+'\n').join([f'titre={self.titre}',f'auteur={self.auteur}',f'langue={self.lang}',f'Table des matières : \n'+self.table])
 
-###
+###--------------------------------------------------------------------------
+
+class Corpus():
+  def __init__(self,adresses):
+    self.adresses=adresses
+    self.livres=[Livre(adresse) for adresse in self.adresses]
+  def __iter__(self):
+    return iter(self.livres)
+  def __repr__(self):
+    return "\n\n".join([str(i) for i in self.livres])
+
+
+###--------------------------------------------------------------------------
 
 """
 
