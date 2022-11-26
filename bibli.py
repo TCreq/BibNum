@@ -9,7 +9,7 @@
 import sys
 from Livre import Livre,Corpus
 from glob import glob
-
+import os
 import ebooklib
 from ebooklib import epub
 from bs4 import BeautifulSoup
@@ -51,6 +51,10 @@ with open(config,"r") as f:
 
 print(f'{archive=}')
 print(f'{rapports=}')
+try:
+  os.mkdir(rapports)
+except:
+  pass
 print(f'{log=}')
 
 ###--------------------------------------------------------------------------------------
@@ -58,8 +62,8 @@ print(f'{log=}')
 files=glob(archive+'*')
 print(files)
 
-#c=Corpus(files)
-#print(c)
+c=Corpus(files)
+print(c)
 
 ###--------------------------------------------------------------------------------------
 
@@ -79,12 +83,12 @@ print(l)
 #print(l)
 
 ### Rapport TXT
-with open("rapport.txt","w") as f:
+with open(rapports+"rapport.txt","w") as f:
   print(str(l), file=f)
 
 
 ### Rapport PDF
-my_canvas = canvas.Canvas("rapport.pdf")
+my_canvas = canvas.Canvas(rapports+"rapport.pdf")
 k=0
 for i in l.specpdf():
   my_canvas.drawString(100, 750-k*15, str(i))
@@ -107,7 +111,7 @@ book.add_metadata(None, 'meta', '', {'name': 'key', 'content': 'value'})
 c1 = epub.EpubHtml(title='Proprietes',
                    file_name='prop.xhtml',
                    lang='fr')
-c1.set_content('<html><body><h1>Propietes</h1><p>'+str(l)+'</p></body></html>')
+c1.set_content('<html><body><h1>Propietes</h1><p>'+l.specepub()+'</p></body></html>')
 c2 = epub.EpubHtml(title='Fin',
                    file_name='fin.xhtml')
 c2.set_content('<h1> ... </h1><p> ... </p>')
@@ -123,7 +127,7 @@ book.toc = (c1,c2)
 book.spine = ['nav', c1, c2]
 book.add_item(epub.EpubNcx())
 book.add_item(epub.EpubNav())
-epub.write_epub('rapport.epub', book)
+epub.write_epub(rapports+'rapport.epub', book)
 
 
 
