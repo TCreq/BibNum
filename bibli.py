@@ -246,7 +246,7 @@ book.add_metadata(None, 'meta', '', {'name': 'key', 'content': 'value'})
 c1 = epub.EpubHtml(title='Auteurs',
                  file_name='prop.xhtml',
                  lang='fr')
-c1.set_content('<html><body><h1>Ouvrages</h1><p>'+taepub+'</p></body></html>')
+c1.set_content('<html><body><h1>Auteurs</h1><p>'+taepub+'</p></body></html>')
 c2 = epub.EpubHtml(title='Fin',
                  file_name='fin.xhtml')
 c2.set_content('<h1> ... </h1><p> ... </p>')
