@@ -78,7 +78,7 @@ if 'update' in args:
 ###--------------------------------------------------------------------------------------
 
 
-l=Livre('stendhal_-_le_rouge_et_le_noir.epub')
+l=Livre(archive+'stendhal_-_le_rouge_et_le_noir.epub')
 #print(l)
 #l=Livre('stendhal_le_rouge_et_le_noir.pdf')
 #print(l)

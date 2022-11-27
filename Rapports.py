@@ -14,15 +14,14 @@ from reportlab.pdfgen import canvas
 
 ### Rapport TXT
 def RTXT(l,rapports):
-  with open(rapports+"rapport.txt","w") as f:
+  with open(str(rapports+l.titre+"_r.txt").replace(' ','_'),"w") as f:
     print(str(l), file=f)
-
 ### Rapport PDF
 def RPDF(l,rapports):
-  my_canvas = canvas.Canvas(rapports+"rapport.pdf")
+  my_canvas = canvas.Canvas(str(rapports+l.titre+"_r.pdf").replace(' ','_'))
   k=0
   for i in l.specpdf():
-    my_canvas.drawString(100, 750-k*15, str(i))
+    my_canvas.drawString(65, 750-k*15, str(i))
     if 750-k*15<100:
       my_canvas.showPage()
       k=0
@@ -33,8 +32,8 @@ def RPDF(l,rapports):
 ### Rapport Epub
 def REpub(l,rapports):
   book = epub.EpubBook()
-  book.set_identifier('rapportLivre1')
-  book.set_title('RapportLivre')
+  book.set_identifier('rapport'+l.titre)
+  book.set_title('Rapport'+l.titre)
   book.set_language('fr')
   book.add_author('system')
   book.add_metadata('DC', 'description', 'Rapport sur le livre')
@@ -42,8 +41,8 @@ def REpub(l,rapports):
   c1 = epub.EpubHtml(title='Proprietes',
                    file_name='prop.xhtml',
                    lang='fr')
-  c1.set_content('<html><body><h1>Propietes</h1><p>'+l.specepub()+'</p></body></html>')
-  c2 = epub.EpubHtml(title='Fin',
+  c1.set_content('<html><body><h1>Table des Matieres</h1><p>'+l.specepub()+'</p></body></html>')
+  c2 = epub.EpubHtml(title='...',
                    file_name='fin.xhtml')
   c2.set_content('<h1> ... </h1><p> ... </p>')
   book.add_item(c1)
@@ -58,7 +57,7 @@ def REpub(l,rapports):
   book.spine = ['nav', c1, c2]
   book.add_item(epub.EpubNcx())
   book.add_item(epub.EpubNav())
-  epub.write_epub(rapports+'rapport.epub', book)
+  epub.write_epub(str(rapports+l.titre+'_r.epub').replace(' ','_'), book)
 
 
 
