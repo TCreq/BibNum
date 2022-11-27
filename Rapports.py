@@ -32,13 +32,13 @@ def RPDF(l,rapports):
 ### Rapport Epub
 def REpub(l,rapports):
   book = epub.EpubBook()
-  book.set_identifier('rapport'+l.titre)
-  book.set_title('Rapport'+l.titre)
+  book.set_identifier('rapport '+l.titre)
+  book.set_title('Rapport - '+l.titre)
   book.set_language('fr')
   book.add_author('system')
   book.add_metadata('DC', 'description', 'Rapport sur le livre')
   book.add_metadata(None, 'meta', '', {'name': 'key', 'content': 'value'})
-  c1 = epub.EpubHtml(title='Proprietes',
+  c1 = epub.EpubHtml(title='Table des matieres',
                    file_name='prop.xhtml',
                    lang='fr')
   c1.set_content('<html><body><h1>Table des Matieres</h1><p>'+l.specepub()+'</p></body></html>')
