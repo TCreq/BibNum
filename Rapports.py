@@ -13,12 +13,12 @@ from bs4 import BeautifulSoup
 from reportlab.pdfgen import canvas
 
 ### Rapport TXT
-def RTXT(l,rapports):
-  with open(str(rapports+l.titre+"_r.txt").replace(' ','_'),"w") as f:
+def RTXT(l,rapports,i=0):
+  with open(str(rapports+str(i)+"_"+l.titre+"_r.txt").replace(' ','_'),"w") as f:
     print(str(l), file=f)
 ### Rapport PDF
-def RPDF(l,rapports):
-  my_canvas = canvas.Canvas(str(rapports+l.titre+"_r.pdf").replace(' ','_'))
+def RPDF(l,rapports,i=0):
+  my_canvas = canvas.Canvas(str(rapports+str(i)+"_"+l.titre+"_r.pdf").replace(' ','_'))
   k=0
   for i in l.specpdf():
     my_canvas.drawString(65, 750-k*15, str(i))
@@ -30,7 +30,7 @@ def RPDF(l,rapports):
   my_canvas.save()
 
 ### Rapport Epub
-def REPUB(l,rapports):
+def REPUB(l,rapports,i=0):
   book = epub.EpubBook()
   book.set_identifier('rapport '+l.titre)
   book.set_title('Rapport - '+l.titre)
@@ -57,13 +57,15 @@ def REPUB(l,rapports):
   book.spine = ['nav', c1, c2]
   book.add_item(epub.EpubNcx())
   book.add_item(epub.EpubNav())
-  epub.write_epub(str(rapports+l.titre+'_r.epub').replace(' ','_'), book)
+  epub.write_epub(str(rapports+str(i)+"_"+l.titre+'_r.epub').replace(' ','_'), book)
 
 def Tables(c,rapports):
+  k=0
   for l in c:
-    RTXT(l,rapports)
-    RPDF(l,rapports)
-    REPUB(l,rapports)
+    RTXT(l,rapports,k)
+    RPDF(l,rapports,k)
+    REPUB(l,rapports,k)
+    k+=1
 
 
 ### Liste des Ouvrages ---------------------------------------------
