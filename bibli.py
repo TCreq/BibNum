@@ -137,22 +137,24 @@ def REpub(l,rapports):
 REpub(l,rapports)
 
 
+###-----------------------------------------------------------------
+### Travail sur un corpus
+###-----------------------------------------------------------------
+
 files=glob(archive+'*')
 #print(files)
 
 c=Corpus(files)
 #print(c)
 
-### Liste des Ouvrages
+### Liste des Ouvrages ---------------------------------------------
 # la liste des ouvrages (au format texte, PDF et epub)
 # qui contient pour chaque livre son titre, son auteur,
 # la langue et le nom du fichier correspondant,
 
-lprops=c.nombre()*['']
-k=0
+lprops=[]
 for i in c:
-  lprops[k]=" ".join(i.props())
-  k+=1
+  lprops+=i.props()+["",""]
 texte="\n".join(lprops)
 tepub='<br />'.join(lprops)
 print(texte)
