@@ -1,0 +1,8 @@
+titre=Guide de Conversation pour parler Espagnol
+------------------------------------------------------------
+auteur=Varenne Vincent La cuisine de vincent
+------------------------------------------------------------
+langue=ca
+------------------------------------------------------------
+Table des matières : 
+

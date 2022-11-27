@@ -30,7 +30,7 @@ def RPDF(l,rapports):
   my_canvas.save()
 
 ### Rapport Epub
-def REpub(l,rapports):
+def REPUB(l,rapports):
   book = epub.EpubBook()
   book.set_identifier('rapport '+l.titre)
   book.set_title('Rapport - '+l.titre)
@@ -59,6 +59,11 @@ def REpub(l,rapports):
   book.add_item(epub.EpubNav())
   epub.write_epub(str(rapports+l.titre+'_r.epub').replace(' ','_'), book)
 
+def Tables(c,rapports):
+  for l in c:
+    RTXT(l,rapports)
+    RPDF(l,rapports)
+    REPUB(l,rapports)
 
 
 ### Liste des Ouvrages ---------------------------------------------

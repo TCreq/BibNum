@@ -60,32 +60,11 @@ print(f'{log=}')
 
 ###--------------------------------------------------------------------------------------
 
-files=glob(archive+'*')
-#print(files)
-
-#c=Corpus(files)
-#print(c)
-
-###--------------------------------------------------------------------------------------
-
 if 'init' in args:
   print('init')
 
 if 'update' in args:
   print('update')
-
-
-###--------------------------------------------------------------------------------------
-
-
-l=Livre(archive+'stendhal_-_le_rouge_et_le_noir.epub')
-#print(l)
-#l=Livre('stendhal_le_rouge_et_le_noir.pdf')
-#print(l)
-
-RTXT(l,rapports)
-RPDF(l,rapports)
-REpub(l,rapports)
 
 
 ###-----------------------------------------------------------------
@@ -97,6 +76,8 @@ files=glob(archive+'*')
 
 c=Corpus(files)
 #print(c)
+
+Tables(c,rapports)
 
 ### Liste des Ouvrages ---------------------------------------------
 # la liste des ouvrages (au format texte, PDF et epub)
