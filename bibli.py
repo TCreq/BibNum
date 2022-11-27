@@ -154,7 +154,7 @@ c=Corpus(files)
 
 lprops=[]
 for i in c:
-  lprops+=i.props()+["",""]
+  lprops+=i.props()+[" "," "]
 texte="\n".join(lprops)
 tepub='<br />'.join(lprops)
 print(texte)

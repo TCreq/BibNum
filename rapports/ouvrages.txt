@@ -2,41 +2,41 @@ titre:Guide de Conversation pour parler Espagnol
 auteur:Varenne Vincent La cuisine de vincent
 langue:ca
 (/home/tcrequy/Depots/BibNum/librio/parler_espagnol_en_voyage.pdf)
-
-
+ 
+ 
 titre:Les malheurs de Sophie
 auteur:Comtesse de Ségur
 langue:fr
 (/home/tcrequy/Depots/BibNum/librio/segur_comtesse_de_-_les_malheurs_de_sophie.epub)
-
-
+ 
+ 
 titre:Le rouge et le noir
 auteur:Stendhal
 langue:fr
 (/home/tcrequy/Depots/BibNum/librio/stendhal_-_le_rouge_et_le_noir.epub)
-
-
+ 
+ 
 titre:Le Rouge et le Noir
 auteur:Stendhal
 langue:fr
 (/home/tcrequy/Depots/BibNum/librio/stendhal_le_rouge_et_le_noir.pdf)
-
-
+ 
+ 
 titre:Les Contemplations
 auteur:Victor Hugo
 langue:fr
 (/home/tcrequy/Depots/BibNum/librio/victor_hugo-les_contemplations.epub)
-
-
+ 
+ 
 titre:Au Bonheur des Dames
 auteur:Émile Zola
 langue:fr
 (/home/tcrequy/Depots/BibNum/librio/zola_emile_-_au_bonheur_des_dames.epub)
-
-
+ 
+ 
 titre:LE JOUEUR D’ÉCHECS
 auteur:STEFAN ZWEIG
 langue:fr
 (/home/tcrequy/Depots/BibNum/librio/zweig_joueur_echecs.pdf)
-
-
+ 
+ 
