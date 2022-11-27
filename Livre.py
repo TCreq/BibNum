@@ -17,8 +17,6 @@ from reportlab.pdfgen import canvas
 ###---------------------------------------------------------------
 
 class Livre():
-  
-  
   def __init__(self,adresse=None):
     if 'epub' in adresse:
       self.adresse=adresse
@@ -40,6 +38,14 @@ class Livre():
       self.t=Livre.tablepdf(self.book.outlines)
     else:
       raise Exception("Fichier non reconnu, uniquement fichiers epub ou pdf")
+
+  def __eq__(self,l):
+    a=self.adresse==l.adresse
+    b=self.titre==l.titre
+    c=self.auteur==l.auteur
+    d=self.lang==l.lang
+    f=self.table==l.table
+    return a and b and c and d and f
 
   def tablepdf(l):
     bits=[]

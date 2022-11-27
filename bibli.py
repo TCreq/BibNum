@@ -1,7 +1,7 @@
 #!/bin/env python3
 ### Description de la classe
 
-""" Classe de base pour le projet librairie """
+""" Programme Principal """
 
 ### Import des modules
 
@@ -20,7 +20,6 @@ from Rapports import *
 ### Recuperation des arguments ###
 
 args=sys.argv
-#print(args)
 
 ### ---------------------------------------------------------------------------------------------
 ### Configuration des Repertoires de lecture, ecriture, log ###
@@ -66,18 +65,14 @@ if 'init' in args:
 if 'update' in args:
   print('update')
 
-
 ###-----------------------------------------------------------------
 ### Travail sur un corpus
 ###-----------------------------------------------------------------
 
 files=glob(archive+'*')
 #print(files)
-
 c=Corpus(files)
 #print(c)
-
-Tables(c,rapports)
 
 ### Liste des Ouvrages ---------------------------------------------
 # la liste des ouvrages (au format texte, PDF et epub)
@@ -86,19 +81,24 @@ Tables(c,rapports)
 
 Ouvrages(c,rapports)
 
-### Liste des Auteurs
+### Liste des Auteurs ----------------------------------------------
 # la liste des auteurs (au format texte, PDF et epub)
 # contenant pour chacun d’eux les titres de ses livres
 # et le nom des fichiers associés.
 
 Auteurs(c,rapports)
 
+### Tables des Matieres --------------------------------------------
+# plus 3 documents par livre (une version texte, PDF et epub),
+# contenant sa table des matières.
 
+Tables(c,rapports)
 
+### Travail sur le log
 
-
-
-
+with open(log,"w") as f:
+  for l in c:
+    print('a',file=f) # ici il me faut une fonction sur le livre pour identifier le livre
 
 
 
