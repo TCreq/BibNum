@@ -1,0 +1,89 @@
+titre=Le rouge et le noir
+------------------------------------------------------------
+auteur=Stendhal
+------------------------------------------------------------
+langue=fr
+------------------------------------------------------------
+Table des matières : 
+Couverture
+À propos
+PRÉFACE DE L’ÉDITEUR
+AVERTISSEMENT
+LE ROUGE ET LE NOIR
+Chapitre 1 UNE PETITE VILLE
+Chapitre 2 UN MAIRE
+Chapitre 3 LE BIEN DES PAUVRES
+Chapitre 4 UN PÈRE ET UN FILS
+Chapitre 5 UNE NÉGOCIATION
+Chapitre 6 L’ENNUI
+Chapitre 7 LES AFFINITÉS ÉLECTIVES
+Chapitre 8 PETITS ÉVÉNEMENTS
+Chapitre 9 UNE SOIRÉE A LA CAMPAGNE
+Chapitre 10 UN GRAND CŒUR ET UNE PETITE FORTUNE
+Chapitre 11 UNE SOIRÉE
+Chapitre 12 UN VOYAGE
+Chapitre 13 LES BAS A JOUR
+Chapitre 14 LES CISEAUX ANGLAIS
+Chapitre 15 LE CHANT DU COQ
+Chapitre 16 LE LENDEMAIN
+Chapitre 17 LE PREMIER ADJOINT
+Chapitre 18 UN ROI A VERRIÈRES
+Chapitre 19 PENSER FAIT SOUFFRIR
+Chapitre 20 LES LETTRES ANONYMES
+Chapitre 21 DIALOGUE AVEC UN MAITRE
+Chapitre 22 FAÇONS D’AGIR EN 1830
+Chapitre 23 CHAGRINS D’UN FONCTIONNAIRE
+Chapitre 24 UNE CAPITALE
+Chapitre 25 LE SÉMINAIRE
+Chapitre 26 LE MONDE OU CE QUI MANQUE AU RICHE
+Chapitre 27 PREMIÈRE EXPÉRIENCE DE LA VIE
+Chapitre 28 UNE PROCESSION
+Chapitre 29 LE PREMIER AVANCEMENT
+Chapitre 30 UN AMBITIEUX
+Chapitre 31 LES PLAISIRS DE LA CAMPAGNE
+Chapitre 32 ENTRÉE DANS LE MONDE
+Chapitre 33 LES PREMIERS PAS
+Chapitre 34 L’HOTEL DE LA MOLE
+Chapitre 35 LA SENSIBILITÉ ET UNE GRANDE DAME DÉVOTE
+Chapitre 36 MANIÈRE DE PRONONCER
+Chapitre 37 UNE ATTAQUE DE GOUTTE
+Chapitre 38 QUELLE EST LA DÉCORATION QUI DISTINGUE ?
+Chapitre 39 LE BAL
+Chapitre 40 LA REINE MARGUERITE
+Chapitre 41 L’EMPIRE D’UNE JEUNE FILLE
+Chapitre 42 SERAIT-CE UN DANTON ?
+Chapitre 43 UN COMPLOT
+Chapitre 44 PENSÉES D’UNE JEUNE FILLE
+Chapitre 45 EST-CE UN COMPLOT ?
+Chapitre 46 UNE HEURE DU MATIN
+Chapitre 47 UNE VIEILLE ÉPÉE
+Chapitre 48 MOMENTS CRUELS
+Chapitre 49 L’OPÉRA BOUFFE
+Chapitre 50 LE VASE DU JAPON
+Chapitre 51 LA NOTE SECRÈTE
+Chapitre 52 LA DISCUSSION
+Chapitre 53 LE CLERGÉ, LES BOIS, LA LIBERTÉ
+Chapitre 54 STRASBOURG
+Chapitre 55 LE MINISTÈRE DE LA VERTU
+Chapitre 56 L’AMOUR MORAL
+Chapitre 57 LES PLUS BELLES PLACES DE L’ÉGLISE
+Chapitre 58 MANON LESCAUT
+Chapitre 59 L’ENNUI
+Chapitre 60 UNE LOGE AUX BOUFFES
+Chapitre 61 LUI FAIRE PEUR
+Chapitre 62 LE TIGRE
+Chapitre 63 L’ENFER DE LA FAIBLESSE
+Chapitre 64 UN HOMME D’ESPRIT
+Chapitre 65 UN ORAGE
+Chapitre 66 DÉTAILS TRISTES
+Chapitre 67 UN DONJON
+Chapitre 68 UN HOMME PUISSANT
+Chapitre 69 L’INTRIGUE
+Chapitre 70 LA TRANQUILLITÉ
+Chapitre 71 LE JUGEMENT
+Chapitre 72
+Chapitre 73
+Chapitre 74
+Chapitre 75
+TO THE HAPPY FEW
+Fin
