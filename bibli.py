@@ -165,7 +165,7 @@ with open(rapports+"ouvrages.txt","w") as f:
 my_canvas = canvas.Canvas(rapports+"ouvrages.pdf")
 k=0
 for i in lprops:
-  my_canvas.drawString(100, 750-k*15, str(i))
+  my_canvas.drawString(65, 750-k*15, str(i))
   if 750-k*15<100:
     my_canvas.showPage()
     k=0
