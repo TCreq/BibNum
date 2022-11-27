@@ -54,8 +54,17 @@ class Livre():
   def specpdf(self):
     return [f'titre={self.titre}',f'auteur={self.auteur}',f'langue={self.lang}',f'Table des matières : ']+[str(i) for i in self.t]
 
+  def props(self):
+    return [f'titre:{self.titre}',f'auteur:{self.auteur}',f'langue:{self.lang}',f'({self.adresse})']
+
+  def auth(self):
+    return [self.auteur,f': {self.titre}']
+
   def specepub(self):
     return '<br />'.join([f'titre={self.titre}',f'auteur={self.auteur}',f'langue={self.lang}',f'Table des matières : ']+[str(i) for i in self.t])
+
+  def pepub(self):
+    return [f'titre={self.titre}',f'auteur={self.auteur}',f'langue={self.lang}']
 
   def __repr__(self):
     return ('\n'+60*'-'+'\n').join([f'titre={self.titre}',f'auteur={self.auteur}',f'langue={self.lang}',f'Table des matières : \n'+self.table])
@@ -70,9 +79,8 @@ class Corpus():
     return iter(self.livres)
   def __repr__(self):
     return "\n\n".join([str(i) for i in self.livres])
-  def EText(self):
-    return "<br />"+"<br />".join([str(i) for i in self.livres])
-
+  def nombre(self):
+    return len(self.livres)
 
 ###--------------------------------------------------------------------------
 

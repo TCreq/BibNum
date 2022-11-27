@@ -60,10 +60,10 @@ print(f'{log=}')
 ###--------------------------------------------------------------------------------------
 
 files=glob(archive+'*')
-print(files)
+#print(files)
 
-c=Corpus(files)
-print(c)
+#c=Corpus(files)
+#print(c)
 
 ###--------------------------------------------------------------------------------------
 
@@ -78,62 +78,100 @@ if 'update' in args:
 
 
 l=Livre('stendhal_-_le_rouge_et_le_noir.epub')
-print(l)
+#print(l)
 #l=Livre('stendhal_le_rouge_et_le_noir.pdf')
 #print(l)
 
 ### Rapport TXT
-with open(rapports+"rapport.txt","w") as f:
-  print(str(l), file=f)
+def RTXT(l,rapports):
+  with open(rapports+"rapport.txt","w") as f:
+    print(str(l), file=f)
 
+RTXT(l,rapports)
 
 ### Rapport PDF
-my_canvas = canvas.Canvas(rapports+"rapport.pdf")
-k=0
-for i in l.specpdf():
-  my_canvas.drawString(100, 750-k*15, str(i))
-  if 750-k*15<100:
-    my_canvas.showPage()
-    k=0
-  k+=1
-my_canvas.showPage()
-my_canvas.save()
+def RPDF(l,rapports):
+  my_canvas = canvas.Canvas(rapports+"rapport.pdf")
+  k=0
+  for i in l.specpdf():
+    my_canvas.drawString(100, 750-k*15, str(i))
+    if 750-k*15<100:
+      my_canvas.showPage()
+      k=0
+    k+=1
+  my_canvas.showPage()
+  my_canvas.save()
 
+RPDF(l,rapports)
 
 ### Rapport Epub
-book = epub.EpubBook()
-book.set_identifier('rapportLivre1')
-book.set_title('RapportLivre')
-book.set_language('fr')
-book.add_author('system')
-book.add_metadata('DC', 'description', 'Rapport sur le livre')
-book.add_metadata(None, 'meta', '', {'name': 'key', 'content': 'value'})
-c1 = epub.EpubHtml(title='Proprietes',
+def REpub(l,rapports):
+  book = epub.EpubBook()
+  book.set_identifier('rapportLivre1')
+  book.set_title('RapportLivre')
+  book.set_language('fr')
+  book.add_author('system')
+  book.add_metadata('DC', 'description', 'Rapport sur le livre')
+  book.add_metadata(None, 'meta', '', {'name': 'key', 'content': 'value'})
+  c1 = epub.EpubHtml(title='Proprietes',
                    file_name='prop.xhtml',
                    lang='fr')
-c1.set_content('<html><body><h1>Propietes</h1><p>'+l.specepub()+'</p></body></html>')
-c2 = epub.EpubHtml(title='Fin',
+  c1.set_content('<html><body><h1>Propietes</h1><p>'+l.specepub()+'</p></body></html>')
+  c2 = epub.EpubHtml(title='Fin',
                    file_name='fin.xhtml')
-c2.set_content('<h1> ... </h1><p> ... </p>')
-book.add_item(c1)
-book.add_item(c2)
-style = 'body { font-family: Times, Times New Roman, serif; }'
-nav_css = epub.EpubItem(uid="style_nav",
+  c2.set_content('<h1> ... </h1><p> ... </p>')
+  book.add_item(c1)
+  book.add_item(c2)
+  style = 'body { font-family: Times, Times New Roman, serif; }'
+  nav_css = epub.EpubItem(uid="style_nav",
                         file_name="style/nav.css",
                         media_type="text/css",
                         content=style)
-book.add_item(nav_css)
-book.toc = (c1,c2)
-book.spine = ['nav', c1, c2]
-book.add_item(epub.EpubNcx())
-book.add_item(epub.EpubNav())
-epub.write_epub(rapports+'rapport.epub', book)
+  book.add_item(nav_css)
+  book.toc = (c1,c2)
+  book.spine = ['nav', c1, c2]
+  book.add_item(epub.EpubNcx())
+  book.add_item(epub.EpubNav())
+  epub.write_epub(rapports+'rapport.epub', book)
+
+REpub(l,rapports)
 
 
+files=glob(archive+'*')
+#print(files)
 
+c=Corpus(files)
+#print(c)
 
+### Liste des Ouvrages
+# la liste des ouvrages (au format texte, PDF et epub)
+# qui contient pour chaque livre son titre, son auteur,
+# la langue et le nom du fichier correspondant,
 
+lprops=c.nombre()*['']
+k=0
+for i in c:
+  lprops[k]=" ".join(i.props())
+  k+=1
+texte="\n".join(lprops)
+print(texte)
 
+with open(rapports+"ouvrages.txt","w") as f:
+  print(texte, file=f)
+
+### Liste des Auteurs
+# la liste des auteurs (au format texte, PDF et epub)
+# contenant pour chacun d’eux les titres de ses livres
+# et le nom des fichiers associés.
+
+loeuvres=c.nombre()*['']
+k=0
+for i in c:
+  loeuvres[k]=" ".join(i.auth())
+  k+=1
+loeuvres.sort(key=str.lower)
+texte="\n".join(loeuvres)
+print(texte)
 
 
 
