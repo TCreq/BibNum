@@ -1,3 +1,5 @@
+/home/tcrequy/Depots/BibNum/librio/segur_comtesse_de_-_les_malheurs_de_sophie.epub
+------------------------------------------------------------
 titre=Les malheurs de Sophie
 ------------------------------------------------------------
 auteur=Comtesse de Ségur

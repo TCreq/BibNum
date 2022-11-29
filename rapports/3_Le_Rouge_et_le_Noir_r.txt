@@ -1,3 +1,5 @@
+/home/tcrequy/Depots/BibNum/librio/stendhal_le_rouge_et_le_noir.pdf
+------------------------------------------------------------
 titre=Le Rouge et le Noir
 ------------------------------------------------------------
 auteur=Stendhal

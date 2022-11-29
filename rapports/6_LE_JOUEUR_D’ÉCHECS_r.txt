@@ -1,3 +1,5 @@
+/home/tcrequy/Depots/BibNum/librio/zweig_joueur_echecs.pdf
+------------------------------------------------------------
 titre=LE JOUEUR D’ÉCHECS
 ------------------------------------------------------------
 auteur=STEFAN ZWEIG

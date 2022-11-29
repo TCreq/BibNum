@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 titre=Le Rouge et le Noir
+=======
+/home/tcrequy/Depots/BibNum/librio/stendhal_-_le_rouge_et_le_noir.epub
+------------------------------------------------------------
+titre=Le rouge et le noir
+>>>>>>> fa947bc00f604471a6c28074d0d2090994124867
 ------------------------------------------------------------
 auteur=Stendhal
 ------------------------------------------------------------

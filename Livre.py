@@ -17,8 +17,6 @@ from reportlab.pdfgen import canvas
 ###---------------------------------------------------------------
 
 class Livre():
-  
-  
   def __init__(self,adresse=None):
     if 'epub' in adresse:
       self.adresse=adresse
@@ -29,6 +27,7 @@ class Livre():
       self.lang=self.book.get_metadata('DC', 'language')[0][0]
       self.table='\n'.join([i.labels[0][0] for i in self.book2.toc.nav_map.nav_point])
       self.t=[i.labels[0][0] for i in self.book2.toc.nav_map.nav_point]
+      self.abstract=str(self).strip('\n')
     elif 'pdf' in adresse:
       self.adresse=adresse
       self.book=PdfReader(adresse)
@@ -38,8 +37,17 @@ class Livre():
       self.lang=detect(self.book.pages[0].extract_text(0))
       self.table='\n'.join(Livre.tablepdf(self.book.outlines))
       self.t=Livre.tablepdf(self.book.outlines)
+      self.abstract=str(self).strip('\n')
     else:
       raise Exception("Fichier non reconnu, uniquement fichiers epub ou pdf")
+
+  def __eq__(self,l):
+    a=self.adresse==l.adresse
+    b=self.titre==l.titre
+    c=self.auteur==l.auteur
+    d=self.lang==l.lang
+    f=self.table==l.table
+    return a and b and c and d and f
 
   def tablepdf(l):
     bits=[]
@@ -67,7 +75,7 @@ class Livre():
     return [f'titre={self.titre}',f'auteur={self.auteur}',f'langue={self.lang}']
 
   def __repr__(self):
-    return ('\n'+60*'-'+'\n').join([f'titre={self.titre}',f'auteur={self.auteur}',f'langue={self.lang}',f'Table des matières : \n'+self.table])
+    return ('\n'+60*'-'+'\n').join([self.adresse,f'titre={self.titre}',f'auteur={self.auteur}',f'langue={self.lang}',f'Table des matières : \n'+self.table])
 
 ###--------------------------------------------------------------------------
 
@@ -75,8 +83,22 @@ class Corpus():
   def __init__(self,adresses):
     self.adresses=adresses
     self.livres=[Livre(adresse) for adresse in self.adresses]
+    self.abstract=[str(l).strip('\n') for l in self.livres]
   def __iter__(self):
     return iter(self.livres)
+  def tauth(self):
+    loeuvres=self.nombre()*['']
+    k=0
+    for i in self:
+      loeuvres[k]=" ".join(i.auth())
+      k+=1
+    loeuvres.sort(key=str.lower)
+    return ("\n".join(loeuvres)).strip('\n')
+  def tprop(self):
+    lprops=[]
+    for i in self:
+      lprops+=i.props()+["_______________________________"," "]
+    return ("\n".join(lprops)).strip('\n')
   def __repr__(self):
     return "\n\n".join([str(i) for i in self.livres])
   def nombre(self):
