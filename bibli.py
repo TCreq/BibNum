@@ -15,6 +15,7 @@ from ebooklib import epub
 from bs4 import BeautifulSoup
 from reportlab.pdfgen import canvas
 from Rapports import *
+import logging
 
 ### -------------------------------------------------------------------------------------------
 ### Recuperation des arguments ###
@@ -49,51 +50,40 @@ with open(config,"r") as f:
     elif il==3:
       log=line.strip()
 
+
+#Setup du fichier log
+logging.basicConfig(filename=log, level=logging.INFO, format="[%(levelname)s][%(asctime)s] %(message)s")
+
 #print(f'{archive=}')
 #print(f'{rapports=}')
 try:
   os.mkdir(rapports)
+  logging.info(f"Creation de répertoire "+rapports)
 except:
   pass
 #print(f'{log=}')
 
 ###--------------------------------------------------------------------------------------
 
-if 'init' in args:
-  print('init')
-  ###-----------------------------------------------------------------
-  ### Travail sur un corpus
-  ###-----------------------------------------------------------------
+def init(archive,rapports):
+  #print('init')
   files=glob(archive+'*')
   #print(files)
   c=Corpus(files)
   #print(c)
-  ### Liste des Ouvrages ---------------------------------------------
-  # la liste des ouvrages (au format texte, PDF et epub)
-  # qui contient pour chaque livre son titre, son auteur,
-  # la langue et le nom du fichier correspondant,
   Ouvrages(c,rapports)
-  ### Liste des Auteurs ----------------------------------------------
-  # la liste des auteurs (au format texte, PDF et epub)
-  # contenant pour chacun d’eux les titres de ses livres
-  # et le nom des fichiers associés.
   Auteurs(c,rapports)
-  ### Tables des Matieres --------------------------------------------
-  # plus 3 documents par livre (une version texte, PDF et epub),
-  # contenant sa table des matières.
   Tables(c,rapports)
 
+if 'init' in args:
+  init(archive,rapports)
 
-if 'update' in args:
-  print('update')
-  ###-----------------------------------------------------------------
-  ### Travail sur un corpus
-  ###-----------------------------------------------------------------
+def update(archive,rapports):
+  #print('update')
   files=glob(archive+'*')
   #print(files)
   c=Corpus(files)
   #print(c)
-  ### Travail sur les Deltas
   files=glob(rapports+'*'+'r.txt')
   fouv=rapports+"ouvrages.txt"
   faut=rapports+"auteurs.txt"
@@ -113,10 +103,19 @@ if 'update' in args:
   #print("rapps",rapps)
   for i in rapps:
     if not (i in c.abstract):
+      #print("absence")
       os.remove(corres[i])
+      logging.info(f"Suppression de "+corres[i])
+      for r in glob(corres[i][:-3]+'*'):
+        try:
+          os.remove(r)
+          logging.info(f"Suppression de "+r)
+        except:
+          pass
   k=10
   for l in c:
     if not (l.abstract in rapps):
+      #print("difference")
       RTXT(l,rapports,k)
       RPDF(l,rapports,k)
       REPUB(l,rapports,k)
@@ -133,9 +132,13 @@ if 'update' in args:
   #print("\n\nresultat",c.tprop()==rouv)
   if not (c.tprop()==rouv):
     try:
+      #print("difference ouvrages")
       os.remove(rapports+"ouvrages.txt")
+      logging.info(f"Suppression de "+rapports+"ouvrages.txt")
       os.remove(rapports+"ouvrages.pdf")
+      logging.info(f"Suppression de "+rapports+"ouvrages.pdf")
       os.remove(rapports+"ouvrages.epub")
+      logging.info(f"Suppression de "+rapports+"ouvrages.epub")
     except:
       pass
     Ouvrages(c,rapports)
@@ -151,19 +154,20 @@ if 'update' in args:
   #print("\n\nresultat",c.tauth()==raut)
   if not (c.tauth()==raut):
     try:
+      #print("difference auteurs")
       os.remove(rapports+"auteurs.txt")
+      logging.info(f"Suppression de "+rapports+"auteurs.txt")
       os.remove(rapports+"auteurs.pdf")
+      logging.info(f"Suppression de "+rapports+"auteurs.pdf")
       os.remove(rapports+"auteurs.epub")
+      logging.info(f"Suppression de "+rapports+"auteurs.epub")
     except:
       pass
     Auteurs(c,rapports)
 
+if 'update' in args:
+  update(archive,rapports)
 
-### Travail sur le log
-
-#with open(log,"w") as f:
-#  for l in c:
-#    print('a',file=f) # ici il me faut une fonction sur le livre pour identifier le livre
 
 
 

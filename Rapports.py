@@ -11,23 +11,26 @@ import ebooklib
 from ebooklib import epub
 from bs4 import BeautifulSoup
 from reportlab.pdfgen import canvas
+import logging
 
 ### Rapport TXT
 def RTXT(l,rapports,i=0):
   with open(str(rapports+str(i)+"_"+l.titre+"_r.txt").replace(' ','_'),"w") as f:
     print(str(l), file=f)
+  logging.info(f"Ajout de "+str(rapports+str(i)+"_"+l.titre+"_r.txt").replace(' ','_'))
 ### Rapport PDF
 def RPDF(l,rapports,i=0):
   my_canvas = canvas.Canvas(str(rapports+str(i)+"_"+l.titre+"_r.pdf").replace(' ','_'))
   k=0
-  for i in l.specpdf():
-    my_canvas.drawString(65, 750-k*15, str(i))
+  for u in l.specpdf():
+    my_canvas.drawString(65, 750-k*15, str(u))
     if 750-k*15<100:
       my_canvas.showPage()
       k=0
     k+=1
   my_canvas.showPage()
   my_canvas.save()
+  logging.info(f"Ajout de "+str(rapports+str(i)+"_"+l.titre+"_r.pdf").replace(' ','_'))
 
 ### Rapport Epub
 def REPUB(l,rapports,i=0):
@@ -58,6 +61,7 @@ def REPUB(l,rapports,i=0):
   book.add_item(epub.EpubNcx())
   book.add_item(epub.EpubNav())
   epub.write_epub(str(rapports+str(i)+"_"+l.titre+'_r.epub').replace(' ','_'), book)
+  logging.info(f"Ajout de "+str(rapports+str(i)+"_"+l.titre+"_r.epub").replace(' ','_'))
 
 def Tables(c,rapports):
   k=0
@@ -83,6 +87,7 @@ def Ouvrages(c,rapports):
   ## Rapport Ouvrages TXT
   with open(rapports+"ouvrages.txt","w") as f:
     print(texte, file=f)
+  logging.info(f"Ajout de "+rapports+"ouvrages.txt")
   ## Rapport Ouvrages PDF
   my_canvas = canvas.Canvas(rapports+"ouvrages.pdf")
   k=0
@@ -94,6 +99,7 @@ def Ouvrages(c,rapports):
     k+=1
   my_canvas.showPage()
   my_canvas.save()
+  logging.info(f"Ajout de "+rapports+"ouvrages.pdf")
   ##Rapport Ouvrages EPUB
   book = epub.EpubBook()
   book.set_identifier('Ouvrages')
@@ -122,6 +128,7 @@ def Ouvrages(c,rapports):
   book.add_item(epub.EpubNcx())
   book.add_item(epub.EpubNav())
   epub.write_epub(rapports+'ouvrages.epub', book)
+  logging.info(f"Ajout de "+rapports+"ouvrages.epub")
 
 
 ### Liste des Auteurs
@@ -143,6 +150,7 @@ def Auteurs(c,rapports):
   ## Rapport Auteurs TXT
   with open(rapports+"auteurs.txt","w") as f:
     print(texte, file=f)
+  logging.info(f"Ajout de "+rapports+"auteurs.txt")
   ## Rapport Auteurs PDF
   my_canvas = canvas.Canvas(rapports+"auteurs.pdf")
   k=0
@@ -154,6 +162,7 @@ def Auteurs(c,rapports):
     k+=1
   my_canvas.showPage()
   my_canvas.save()
+  logging.info(f"Ajout de "+rapports+"auteurs.pdf")
   ## Rapport Auteurs EPUB
   book = epub.EpubBook()
   book.set_identifier('Auteurs')
@@ -182,7 +191,7 @@ def Auteurs(c,rapports):
   book.add_item(epub.EpubNcx())
   book.add_item(epub.EpubNav())
   epub.write_epub(rapports+'auteurs.epub', book)
-
+  logging.info(f"Ajout de "+rapports+"auteurs.epub")
 
 
 

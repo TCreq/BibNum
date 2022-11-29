@@ -34,7 +34,8 @@ class Livre():
       self.book2=None
       self.titre=str(self.book.metadata.title)
       self.auteur=str(self.book.metadata.author)
-      self.lang=detect(self.book.pages[0].extract_text(0))
+      #self.lang=detect(self.book.pages[0].extract_text(0))
+      self.lang='fr'
       self.table='\n'.join(Livre.tablepdf(self.book.outlines))
       self.t=Livre.tablepdf(self.book.outlines)
       self.abstract=str(self).strip('\n')
@@ -82,7 +83,12 @@ class Livre():
 class Corpus():
   def __init__(self,adresses):
     self.adresses=adresses
-    self.livres=[Livre(adresse) for adresse in self.adresses]
+    self.livres=[]
+    for adresse in adresses:
+      try:
+        self.livres+=[Livre(adresse)]
+      except:
+        pass
     self.abstract=[str(l).strip('\n') for l in self.livres]
   def __iter__(self):
     return iter(self.livres)
