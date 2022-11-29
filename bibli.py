@@ -49,13 +49,13 @@ with open(config,"r") as f:
     elif il==3:
       log=line.strip()
 
-print(f'{archive=}')
-print(f'{rapports=}')
+#print(f'{archive=}')
+#print(f'{rapports=}')
 try:
   os.mkdir(rapports)
 except:
   pass
-print(f'{log=}')
+#print(f'{log=}')
 
 ###--------------------------------------------------------------------------------------
 
@@ -97,7 +97,7 @@ if 'update' in args:
   files=glob(rapports+'*'+'r.txt')
   fouv=rapports+"ouvrages.txt"
   faut=rapports+"auteurs.txt"
-  print(files)
+  #print(files)
   rapps=[]
   corres=dict({})
   for i in files:
@@ -121,6 +121,43 @@ if 'update' in args:
       RPDF(l,rapports,k)
       REPUB(l,rapports,k)
       k+=1
+  try:
+    txt=''
+    with open(fouv,"r") as f:
+      for line in f:
+        txt+=line
+    rouv=txt.strip('\n')
+  except:
+    rouv=''
+  #print("\ntest1\n\n",c.tprop(),rouv)
+  #print("\n\nresultat",c.tprop()==rouv)
+  if not (c.tprop()==rouv):
+    try:
+      os.remove(rapports+"ouvrages.txt")
+      os.remove(rapports+"ouvrages.pdf")
+      os.remove(rapports+"ouvrages.epub")
+    except:
+      pass
+    Ouvrages(c,rapports)
+  try:
+    txt=''
+    with open(faut,"r") as f:
+      for line in f:
+        txt+=line
+    raut=txt.strip('\n')
+  except:
+    raut=''
+  #print("\ntest2\n\n",c.tauth(),raut)
+  #print("\n\nresultat",c.tauth()==raut)
+  if not (c.tauth()==raut):
+    try:
+      os.remove(rapports+"auteurs.txt")
+      os.remove(rapports+"auteurs.pdf")
+      os.remove(rapports+"auteurs.epub")
+    except:
+      pass
+    Auteurs(c,rapports)
+
 
 ### Travail sur le log
 
@@ -129,23 +166,8 @@ if 'update' in args:
 #    print('a',file=f) # ici il me faut une fonction sur le livre pour identifier le livre
 
 
-'''
-txt=''
-with open(fouv,"r") as f:
-  for line in f:
-    txt+=line
-rouv=txt.strip('\n')
-print("test1",c.tprop(),rouv)
-
-txt=''
-with open(faut,"r") as f:
-  for line in f:
-    txt+=line
-raut=txt.strip('\n')
-print("test2",c.tauth(),raut)
 
 
-'''
 
 
 

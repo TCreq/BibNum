@@ -93,12 +93,12 @@ class Corpus():
       loeuvres[k]=" ".join(i.auth())
       k+=1
     loeuvres.sort(key=str.lower)
-    return ''.join(loeuvres)
+    return ("\n".join(loeuvres)).strip('\n')
   def tprop(self):
     lprops=[]
     for i in self:
       lprops+=i.props()+["_______________________________"," "]
-    return ''.join(lprops)
+    return ("\n".join(lprops)).strip('\n')
   def __repr__(self):
     return "\n\n".join([str(i) for i in self.livres])
   def nombre(self):
