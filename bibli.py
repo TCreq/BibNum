@@ -61,60 +61,91 @@ print(f'{log=}')
 
 if 'init' in args:
   print('init')
+  ###-----------------------------------------------------------------
+  ### Travail sur un corpus
+  ###-----------------------------------------------------------------
+  files=glob(archive+'*')
+  #print(files)
+  c=Corpus(files)
+  #print(c)
+  ### Liste des Ouvrages ---------------------------------------------
+  # la liste des ouvrages (au format texte, PDF et epub)
+  # qui contient pour chaque livre son titre, son auteur,
+  # la langue et le nom du fichier correspondant,
+  Ouvrages(c,rapports)
+  ### Liste des Auteurs ----------------------------------------------
+  # la liste des auteurs (au format texte, PDF et epub)
+  # contenant pour chacun d’eux les titres de ses livres
+  # et le nom des fichiers associés.
+  Auteurs(c,rapports)
+  ### Tables des Matieres --------------------------------------------
+  # plus 3 documents par livre (une version texte, PDF et epub),
+  # contenant sa table des matières.
+  Tables(c,rapports)
+
 
 if 'update' in args:
   print('update')
-
-###-----------------------------------------------------------------
-### Travail sur un corpus
-###-----------------------------------------------------------------
-
-files=glob(archive+'*')
-#print(files)
-c=Corpus(files)
-#print(c)
-
-### Liste des Ouvrages ---------------------------------------------
-# la liste des ouvrages (au format texte, PDF et epub)
-# qui contient pour chaque livre son titre, son auteur,
-# la langue et le nom du fichier correspondant,
-
-Ouvrages(c,rapports)
-
-### Liste des Auteurs ----------------------------------------------
-# la liste des auteurs (au format texte, PDF et epub)
-# contenant pour chacun d’eux les titres de ses livres
-# et le nom des fichiers associés.
-
-Auteurs(c,rapports)
-
-### Tables des Matieres --------------------------------------------
-# plus 3 documents par livre (une version texte, PDF et epub),
-# contenant sa table des matières.
-
-Tables(c,rapports)
+  ###-----------------------------------------------------------------
+  ### Travail sur un corpus
+  ###-----------------------------------------------------------------
+  files=glob(archive+'*')
+  #print(files)
+  c=Corpus(files)
+  #print(c)
+  ### Travail sur les Deltas
+  files=glob(rapports+'*'+'r.txt')
+  fouv=rapports+"ouvrages.txt"
+  faut=rapports+"auteurs.txt"
+  print(files)
+  rapps=[]
+  corres=dict({})
+  for i in files:
+    il = 0
+    txt=''
+    with open(i,"r") as f:
+      for line in f:
+        txt+=line
+        il+=1
+    rapps+=[txt.strip('\n')]
+    corres[txt.strip('\n')]=i
+  #print("abst",c.abstract)
+  #print("rapps",rapps)
+  for i in rapps:
+    if not (i in c.abstract):
+      os.remove(corres[i])
+  k=10
+  for l in c:
+    if not (l.abstract in rapps):
+      RTXT(l,rapports,k)
+      RPDF(l,rapports,k)
+      REPUB(l,rapports,k)
+      k+=1
 
 ### Travail sur le log
 
-with open(log,"w") as f:
-  for l in c:
-    print('a',file=f) # ici il me faut une fonction sur le livre pour identifier le livre
+#with open(log,"w") as f:
+#  for l in c:
+#    print('a',file=f) # ici il me faut une fonction sur le livre pour identifier le livre
 
 
+'''
+txt=''
+with open(fouv,"r") as f:
+  for line in f:
+    txt+=line
+rouv=txt.strip('\n')
+print("test1",c.tprop(),rouv)
+
+txt=''
+with open(faut,"r") as f:
+  for line in f:
+    txt+=line
+raut=txt.strip('\n')
+print("test2",c.tauth(),raut)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+'''
 
 
 

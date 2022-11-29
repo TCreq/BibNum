@@ -1,3 +1,5 @@
+/home/tcrequy/Depots/BibNum/librio/zola_emile_-_au_bonheur_des_dames.epub
+------------------------------------------------------------
 titre=Au Bonheur des Dames
 ------------------------------------------------------------
 auteur=Émile Zola

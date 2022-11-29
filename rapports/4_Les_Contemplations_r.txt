@@ -1,3 +1,5 @@
+/home/tcrequy/Depots/BibNum/librio/victor_hugo-les_contemplations.epub
+------------------------------------------------------------
 titre=Les Contemplations
 ------------------------------------------------------------
 auteur=Victor Hugo
