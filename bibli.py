@@ -10,10 +10,6 @@ import sys
 from Livre import Livre,Corpus
 from glob import glob
 import os
-import ebooklib
-from ebooklib import epub
-from bs4 import BeautifulSoup
-from reportlab.pdfgen import canvas
 from Rapports import *
 import logging
 

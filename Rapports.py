@@ -9,17 +9,18 @@
 from Livre import Livre,Corpus
 import ebooklib
 from ebooklib import epub
-from bs4 import BeautifulSoup
 from reportlab.pdfgen import canvas
 import logging
 
 ### Rapport TXT
 def RTXT(l,rapports,i=0):
+  """ fonction du rapport txt contenant la table des matieres """
   with open(str(rapports+str(i)+"_"+l.titre+"_r.txt").replace(' ','_'),"w") as f:
     print(str(l), file=f)
   logging.info(f"Ajout de "+str(rapports+str(i)+"_"+l.titre+"_r.txt").replace(' ','_'))
 ### Rapport PDF
 def RPDF(l,rapports,i=0):
+  """ fonction du rapport pdf contenant la table des matieres """
   my_canvas = canvas.Canvas(str(rapports+str(i)+"_"+l.titre+"_r.pdf").replace(' ','_'))
   k=0
   for u in l.specpdf():
@@ -34,6 +35,7 @@ def RPDF(l,rapports,i=0):
 
 ### Rapport Epub
 def REPUB(l,rapports,i=0):
+  """ fonction du rapport epub contenant la table des matieres """
   book = epub.EpubBook()
   book.set_identifier('rapport '+l.titre)
   book.set_title('Rapport - '+l.titre)
@@ -64,6 +66,7 @@ def REPUB(l,rapports,i=0):
   logging.info(f"Ajout de "+str(rapports+str(i)+"_"+l.titre+"_r.epub").replace(' ','_'))
 
 def Tables(c,rapports):
+  """ fonction qui génère les rapports de table des matieres pour chaque livre du corpus """
   k=0
   for l in c:
     RTXT(l,rapports,k)
@@ -78,6 +81,7 @@ def Tables(c,rapports):
 # la langue et le nom du fichier correspondant
 
 def Ouvrages(c,rapports):
+  """ fonction qui génère les 3 rapports pour le corpus sur la liste des ouvrages """
   lprops=[]
   for i in c:
     lprops+=i.props()+["_______________________________"," "]
@@ -137,6 +141,7 @@ def Ouvrages(c,rapports):
 # et le nom des fichiers associés.
 
 def Auteurs(c,rapports):
+  """ fonction qui génère les rapports sur les auteurs du corpus """
   loeuvres=c.nombre()*['']
   k=0
   for i in c:
