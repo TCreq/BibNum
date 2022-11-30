@@ -11,6 +11,7 @@ import epub as e2
 import ebooklib
 from ebooklib import epub
 from langdetect import detect
+import logging
 
 ###---------------------------------------------------------------
 
@@ -95,6 +96,7 @@ class Corpus():
       try:
         self.livres+=[Livre(adresse)]
       except:
+        logging.info("Impossible de lire "+adresse)
         pass
     self.abstract=[str(l).strip('\n') for l in self.livres]
   def __iter__(self):
