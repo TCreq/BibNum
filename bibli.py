@@ -110,9 +110,9 @@ def update(archive,rapports): #programme quand on a la commande update
   for l in c: #on parcourt l'archive actuelle
     if not (l.abstract in rapps): #si le rapport pour le livre actuel n'est pas déjà dans les rapports existantes
       #print("difference")
-      RTXT(l,rapports,k) #on génere tous les rapports
-      RPDF(l,rapports,k)
-      REPUB(l,rapports,k)
+      RTXT(l,rapports,"U_"+str(k)) #on génere tous les rapports
+      RPDF(l,rapports,"U_"+str(k))
+      REPUB(l,rapports,"U_"+str(k))
       k+=1
   try:
     txt=''

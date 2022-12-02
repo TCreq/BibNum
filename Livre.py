@@ -27,6 +27,8 @@ class Livre():
       self.table='\n'.join([i.labels[0][0] for i in self.book2.toc.nav_map.nav_point])
       self.t=[i.labels[0][0] for i in self.book2.toc.nav_map.nav_point]
       self.abstract=str(self).strip('\n')
+      self.book=None
+      self.book2=None
     elif 'pdf' in adresse:
       self.adresse=adresse
       self.book=PdfReader(adresse)
@@ -38,6 +40,8 @@ class Livre():
       self.table='\n'.join(Livre.tablepdf(self.book.outlines))
       self.t=Livre.tablepdf(self.book.outlines)
       self.abstract=str(self).strip('\n')
+      self.book=None
+      self.book2=None
     else:
       raise Exception("Fichier non reconnu, uniquement fichiers epub ou pdf")
 

@@ -13,15 +13,19 @@ from reportlab.pdfgen import canvas
 import logging
 
 ### Rapport TXT
-def RTXT(l,rapports,i=0):
+def change(titre):
+  return titre.replace(' ','_').replace('\\','_').replace("'","_").replace("-","_").replace("/","_")
+def RTXT(l,rapports,i='0'):
   """ fonction du rapport txt contenant la table des matieres """
-  with open(str(rapports+str(i)+"_"+l.titre+"_r.txt").replace(' ','_'),"w") as f:
+  adresse=str(rapports+str(i)+"_"+change(l.titre)+"_r.txt").replace(' ','_')
+  with open(adresse,"w") as f:
     print(str(l), file=f)
-  logging.info(f"Ajout de "+str(rapports+str(i)+"_"+l.titre+"_r.txt").replace(' ','_'))
+  logging.info("Ajout de "+adresse)
 ### Rapport PDF
-def RPDF(l,rapports,i=0):
+def RPDF(l,rapports,i='0'):
   """ fonction du rapport pdf contenant la table des matieres """
-  my_canvas = canvas.Canvas(str(rapports+str(i)+"_"+l.titre+"_r.pdf").replace(' ','_'))
+  adresse=str(rapports+str(i)+"_"+change(l.titre)+"_r.pdf")
+  my_canvas = canvas.Canvas(adresse)
   k=0
   for u in l.specpdf():
     my_canvas.drawString(65, 750-k*15, str(u))
@@ -31,10 +35,10 @@ def RPDF(l,rapports,i=0):
     k+=1
   my_canvas.showPage()
   my_canvas.save()
-  logging.info(f"Ajout de "+str(rapports+str(i)+"_"+l.titre+"_r.pdf").replace(' ','_'))
+  logging.info(f"Ajout de "+adresse)
 
 ### Rapport Epub
-def REPUB(l,rapports,i=0):
+def REPUB(l,rapports,i='0'):
   """ fonction du rapport epub contenant la table des matieres """
   book = epub.EpubBook()
   book.set_identifier('rapport '+l.titre)
@@ -62,8 +66,9 @@ def REPUB(l,rapports,i=0):
   book.spine = ['nav', c1, c2]
   book.add_item(epub.EpubNcx())
   book.add_item(epub.EpubNav())
-  epub.write_epub(str(rapports+str(i)+"_"+l.titre+'_r.epub').replace(' ','_'), book)
-  logging.info(f"Ajout de "+str(rapports+str(i)+"_"+l.titre+"_r.epub").replace(' ','_'))
+  adresse=str(rapports+str(i)+"_"+change(l.titre)+"_r.epub")
+  epub.write_epub(adresse, book)
+  logging.info(f"Ajout de "+adresse)
 
 def Tables(c,rapports):
   """ fonction qui génère les rapports de table des matieres pour chaque livre du corpus """
