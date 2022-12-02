@@ -1,0 +1,90 @@
+titre:UN ROI TOUT NU
+auteur:Albert Adès
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/ades_roi_tout_nu.pdf)
+_______________________________
+ 
+titre:ADVIS DE LA DEFFAICTE DES ANGLOIS ET AVTRES HERETIQUES VENUZ EN BRETAIGNE, POUR LE ROY DE NAUARRE, PRES CHAFTEAU-BOURG.
+auteur:
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/advis_deffaicte_anglois_source.pdf)
+_______________________________
+ 
+titre:ADVIS DE LA REPRINSE DV CHASTEAV D'ANGIERS, ET DES ROUTTES DE MONFIEUR LE PRINCE DE CONDÉ, VENU AU FECOURS D'ICELUY.
+auteur:
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/advis_reprinse_chasteav_angiers.pdf)
+_______________________________
+ 
+titre:Procès contre les animaux - Curiosités judiciaires et historiques du Moyen-Âge
+auteur:Émile Agnel
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/agnel_proces_contre_les_animaux.pdf)
+_______________________________
+ 
+titre:L’ILLUSTRE MAURIN
+auteur:Jean Aicard
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/aicard_illustre_maurin.pdf)
+_______________________________
+ 
+titre:Maurin des Maures
+auteur:Jean Aicard
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/aicard_maurin_des_maures.pdf)
+_______________________________
+ 
+titre:L’AIGLE-NOIR DES DACOTAHS
+auteur:Gustave Aimard – Jules Berlioz d'Auriac
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/aimard_aigle_noir_dacotahs.pdf)
+_______________________________
+ 
+titre:Microsoft Word - BibNum.docx
+auteur:HP
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/NoticeBibNum.pdf)
+_______________________________
+ 
+titre:Guide de Conversation pour parler Espagnol
+auteur:Varenne Vincent La cuisine de vincent
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/parler_espagnol_en_voyage.pdf)
+_______________________________
+ 
+titre:Les malheurs de Sophie
+auteur:Comtesse de Ségur
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/segur_comtesse_de_-_les_malheurs_de_sophie.epub)
+_______________________________
+ 
+titre:Le rouge et le noir
+auteur:Stendhal
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/stendhal_-_le_rouge_et_le_noir.epub)
+_______________________________
+ 
+titre:Le Rouge et le Noir
+auteur:Stendhal
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/stendhal_le_rouge_et_le_noir.pdf)
+_______________________________
+ 
+titre:Les Contemplations
+auteur:Victor Hugo
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/victor_hugo-les_contemplations.epub)
+_______________________________
+ 
+titre:Au Bonheur des Dames
+auteur:Émile Zola
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/zola_emile_-_au_bonheur_des_dames.epub)
+_______________________________
+ 
+titre:LE JOUEUR D’ÉCHECS
+auteur:STEFAN ZWEIG
+langue:fr
+(/home/tcrequy/Depots/BibNum/librio/zweig_joueur_echecs.pdf)
+_______________________________
+ 
